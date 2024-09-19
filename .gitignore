@@ -1,0 +1,7 @@
+slurm-*.out
+wandb
+data_stats
+.vscode
+trained_model/model_best.pth
+trained_model/raw_model_outputs.json
+custom_model/*

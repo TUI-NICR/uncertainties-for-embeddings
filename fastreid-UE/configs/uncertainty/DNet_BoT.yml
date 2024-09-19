@@ -1,0 +1,15 @@
+_BASE_: ./DNet.yml
+
+# This file adds REA, Padding Augmentation, Triplet Loss, and Center Loss to DNet.
+# These have been shown to be advantageous to DNet.
+
+MODEL:
+  LOSSES:
+    NAME: ("CrossEntropyLoss", "SampleCrossEntropyLoss", "FeatureUncertaintyLoss", "TripletLoss", "CenterLoss")
+
+INPUT:
+  REA:
+    ENABLED: True
+
+  PADDING:
+    ENABLED: True

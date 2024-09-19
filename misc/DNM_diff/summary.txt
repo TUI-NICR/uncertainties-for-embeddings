@@ -1,0 +1,18 @@
+For the subset bounding_box_train, 12936/12936 or 100.0% of images were different.
+On average, 73288.03 or 74.55% pixels of a given image were different.
+On average, they differed by 1.85 and the total average difference per pixel of an image was [1.4317229  1.21626058 1.49722595].
+The image with the most difference (82219 different pixels) was bounding_box_train/0681_c6s2_048468_01.jpg and the one with the least difference (52390 different pixels) was bounding_box_train/0707_c6s2_052543_03.jpg. 
+The max diff image was scaled by 5.1 and the min diff image was scaled by 36.42857142857143.
+
+For the subset bounding_box_test, 13115/13115 or 100.0% of images were different.
+On average, 73467.25 or 74.73% pixels of a given image were different.
+On average, they differed by 1.86 and the total average difference per pixel of an image was [1.43589199 1.22194899 1.52185439].
+The image with the most difference (81798 different pixels) was bounding_box_test/0750_c6s2_067543_02.jpg and the one with the least difference (52903 different pixels) was bounding_box_test/0078_c6s1_012526_02.jpg. 
+The max diff image was scaled by 12.142857142857142 and the min diff image was scaled by 31.875.
+
+For the subset query, 3368/3368 or 100.0% of images were different.
+On average, 73642.52 or 74.91% pixels of a given image were different.
+On average, they differed by 1.87 and the total average difference per pixel of an image was [1.45211152 1.23991854 1.5163792 ].
+The image with the most difference (81429 different pixels) was query/0343_c4s2_006742_00.jpg and the one with the least difference (58867 different pixels) was query/0815_c6s2_094743_00.jpg. 
+The max diff image was scaled by 13.421052631578947 and the min diff image was scaled by 36.42857142857143.
+

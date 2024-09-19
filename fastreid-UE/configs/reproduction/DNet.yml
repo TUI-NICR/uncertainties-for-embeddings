@@ -1,0 +1,79 @@
+MODEL:
+  META_ARCHITECTURE: Baseline_DNet
+
+  BACKBONE:
+    NAME: build_resnet_DNet_backbone
+    NORM: BN
+    FEAT_DIM: 2048
+    WITH_IBN: False
+    # careful to add or not add %a here depending on what you need
+    #PRETRAIN_PATH: /results_nas/ange8547/DNet/fastreid/pretrain_PT_DNM__rndsmpl/1/model_final.pth
+    PRETRAIN: False
+
+  WEIGHTS: /results_nas/ange8547/DNet/fastreid # is updated in tool script
+
+  HEADS:
+    NAME: EmbeddingHead_DNet
+    NORM: BN
+    POOL_LAYER: GlobalAvgPool
+    NUM_CLASSES: 751
+
+  LOSSES:
+    NAME: ("CrossEntropyLoss",)
+
+    CE:
+      EPSILON: 0.1
+      SCALE: 1.
+    
+  PIXEL_MEAN: [123.68, 116.78, 103.94]
+  PIXEL_STD: [1, 1, 1]
+
+  FREEZE_WEIGHTS: [backbone.layer1, backbone.layer2, backbone.layer3, backbone.conv1, backbone.bn1]
+
+  DEVICE: cuda:0
+
+DATASETS: # is updated in tool script
+  NAMES: ("MarketDNet",)
+  TESTS: ("MarketDNet",)
+
+OUTPUT_DIR: /results_nas/ange8547/DNet/fastreid # is updated in tool script
+
+INPUT:
+  SIZE_TRAIN: [ 256, 128 ]
+  SIZE_TEST: [ 256, 128 ]
+  INTERPOLATION_MODE: 2
+
+  FLIP:
+    ENABLED: True
+
+DATALOADER:
+  SAMPLER_TRAIN: TrainingSampler
+  NUM_WORKERS: 1
+
+SOLVER:
+  AMP:
+    ENABLED: True
+  OPT: Adam
+  MAX_EPOCH: 50
+  BASE_LR: 0.00005
+  WEIGHT_DECAY: 0.0001
+  WEIGHT_DECAY_NORM: 0.0
+  WEIGHT_DECAY_BIAS: 0.0
+  IMS_PER_BATCH: 32
+
+  SCHED: MultiStepLR
+  STEPS: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
+  GAMMA: 0.95
+
+  WARMUP_ITERS: 0
+
+  CHECKPOINT_PERIOD: 2
+
+TEST:
+  EVAL_PERIOD: 1
+  IMS_PER_BATCH: 100
+  METRIC: euclidean_dnet
+  EXTRA_END_EVAL: True
+  EXTRA_END_EVAL_METRIC: [euclidean_dnet, cosine, sigma_cosine, sqrt_sigma_cosine, euclidean, sigma_euclidean, sqrt_sigma_euclidean, kl_divergence, js_divergence, bhat_distance, wasserstein]
+
+CUDNN_BENCHMARK: True

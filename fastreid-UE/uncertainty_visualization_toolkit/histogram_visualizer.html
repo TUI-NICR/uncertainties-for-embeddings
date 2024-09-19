@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Histogram Visualizer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div style="display:flex; flex-direction: column">
+        <div style="position:fixed; z-index: 10; display:flex; flex-direction:row; border-bottom: 2px solid #777; background-color: #fff;">
+            Num Bins: 
+            <input type="number" id="num-bins" style="width:3rem;" value="100">
+
+            <div class="ranking-divider"></div>
+
+            Set:
+            <input type="text" value="G" id="set" style="width: 4rem;">
+
+            <div class="ranking-divider"></div>
+
+            Unc.-type:
+            <input type="text" value="data" id="unc-type" style="width: 4rem;">
+
+            <div class="ranking-divider"></div>
+
+            Window:
+            <input type="checkbox" id="window-enable">
+            <input type="number" id="window-lo" style="width:4rem;">
+            <input type="number" id="window-hi" style="width:4rem;">
+
+            <!-- TODO: add functionality to specify window of score values to consider in visualization, so we can "zoom in" on what interests us -->
+            
+            <div class="ranking-divider"></div>
+
+            Score Function: <input type="text" value="L2" id="score-func" style="width: 4rem;">
+            
+            <div class="ranking-divider"></div>
+
+            Density:
+            <input type="checkbox" id="density" checked>
+            
+            <div class="ranking-divider"></div>
+            
+            <button onclick="document.render()">Render</button>
+        </div>
+    <img id="hist" style="height:100vh;">
+    <!-- update image with same name using ?Date.now() at the end of the URI -->
+    <script type="text/javascript" src="histogram_visualizer.js"></script>
+</body>
+</html>

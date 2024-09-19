@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Uncertainty Ranking Visualizer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div style="display:flex; flex-direction: column">
+        <div style="position:fixed; z-index: 10; display:flex; flex-direction:row; border-bottom: 2px solid #777; background-color: #fff;">
+            Num Img: 
+            <input type="number" id="num-ex-input-least" style="width:3rem;" value="3">
+            <input type="number" id="num-ex-input-mid" style="width:3rem;" value="1">
+            <input type="number" id="num-ex-input-most" style="width:3rem;" value="3">
+            
+            <div class="ranking-divider"></div>
+
+            Set❌: <input type="text" value="Q,G" id="set-disable" style="width: 4rem;" onchange="document.render()">
+            <div class="ranking-divider"></div>
+            <!-- Agg❌: <input type="text" value="" id="aggregation-disable" style="width: 5rem;" onchange="document.render()">
+            <div class="ranking-divider"></div> -->
+            Func❌: <input type="text" value="entropy" id="function-disable" style="width: 8rem;" onchange="document.render()">
+
+            <div class="ranking-divider"></div>
+
+            <button onclick="showSettings()">Settings</button>
+            <button onclick="document.render()">Render</button>
+        </div>
+    <div id="diagram">
+        <!-- populated in main.js -->
+    </div>
+    <div id="settings">
+        <!-- populated in main.js -->
+    </div>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="ranking_visualizer.js"></script>
+</body>
+</html>

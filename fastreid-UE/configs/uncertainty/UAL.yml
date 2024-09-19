@@ -1,0 +1,75 @@
+_BASE_: ./Base-Uncertainty.yml
+
+MODEL:
+
+  META_ARCHITECTURE: Uncertainty
+
+  HEADS:
+    PARALLEL_3D_CONV: False
+    PARALLEL_BN_FULL_3D: False
+    PARALLEL_DIM_LEN: 1
+    PARALLEL_DIM_LEN_EVAL: 1 # 30
+    PARALLEL_DIM_REPEAT: 1
+    PARALLEL_DIM_REPEAT_EVAL: 30
+    NUM_CLASSES: 751
+
+  NECK:
+    NAME: UAL_neck
+    MID_DIMS: [1024, 512]
+    P: 0.7
+    BAYESIAN_LAYER: Dropout #2.5D # Gaussian2.5D
+
+  MEAN_HEAD:
+    NAME: UAL_mean_head
+    MID_DIMS: [1024, 512]
+
+  VAR_HEAD:
+    NAME: UAL_var_head
+    MID_DIMS: [1024]
+
+  CROWN:
+    NAME: UAL_crown
+
+  LOSSES:
+    NAME: ("TripletLoss", "DataUncertaintyLoss")
+
+    TRI:
+      MARGIN: 0.3
+      HARD_MINING: True
+      NORM_FEAT: True
+      SCALE: 1.
+
+    DUL:
+      EPSILON: 0.1
+      LAMBDA: 1.
+      SCALE: 1.
+
+    SDUL:
+      EPSILON: 0.1
+      LAMBDA: 1.
+      SCALE: 1.
+
+SOLVER:
+  CHECKPOINT_PERIOD: 5
+
+TEST:
+  METRIC: cosine
+  EXTRA_END_EVAL: True
+  EXTRA_END_EVAL_METRIC: [cosine, sigma_cosine, sqrt_sigma_cosine, euclidean, sigma_euclidean, sqrt_sigma_euclidean, kl_divergence, js_divergence, bhat_distance, wasserstein]
+  EVAL_PERIOD: 5
+
+  # UNCERTAINTY:
+  #   MODEL:
+  #     SETS: ["Q", "G", "Q+G", "D1", "D2", "D3", "D4"]
+  #     AGGREGATIONS: ["min", "max", "avg"]
+  #     FUNCTIONS: [1, 2, "max", "min", "avg", "entropy"]
+  #   DATA:
+  #     SETS: ["Q", "G", "Q+G", "D1", "D2", "D3", "D4"]
+  #     AGGREGATIONS: ["min", "max", "avg"]
+  #     FUNCTIONS: [1, 2, "max", "min", "avg", "entropy"]
+  #   DIST:
+  #     SETS: ["Q", "G", "Q+G", "D1", "D2", "D3", "D4"]
+  #     AGGREGATIONS: ["min", "max", "avg"]
+  #     FUNCTIONS: [1, 2, "max", "min", "avg", "entropy"]
+
+OUTPUT_DIR: /usr/scratch4/angel8547/results/UAL/%I

@@ -1,0 +1,47 @@
+_BASE_: ./Base-Uncertainty.yml
+
+MODEL:
+
+  HEADS:
+    PARALLEL_3D_CONV: True
+    PARALLEL_BN_FULL_3D: False
+    PARALLEL_DIM_LEN: 6 # max that will fit on GPU
+
+  NECK:
+    NAME: UAL_neck
+    MID_DIMS: [1024, 512]
+    P: 0.7
+    BAYESIAN_LAYER: Dropout # Gaussian
+
+  MEAN_HEAD:
+    NAME: UAL_mean_head
+    MID_DIMS: [1024, 512]
+
+  VAR_HEAD:
+    NAME: UAL_var_head
+    MID_DIMS: [1024]
+
+  CROWN:
+    NAME: UAL_crown
+
+  LOSSES:
+    NAME: ("TripletLoss", "DataUncertaintyLoss")
+
+    TRI:
+      MARGIN: 0.3
+      HARD_MINING: True
+      NORM_FEAT: True
+      SCALE: 1.
+
+    DUL:
+      EPSILON: 0.1
+      LAMBDA: 1.
+      SCALE: 1.
+
+TEST:
+  METRIC: cosine
+  EXTRA_END_EVAL: True
+  EXTRA_END_EVAL_METRIC: [cosine, sigma_cosine, sqrt_sigma_cosine, euclidean, sigma_euclidean, sqrt_sigma_euclidean, kl_divergence, js_divergence, bhat_distance, wasserstein]
+  EVAL_PERIOD: 5
+
+OUTPUT_DIR: /results_nas/ange8547/mod_arch/UAL/experiments

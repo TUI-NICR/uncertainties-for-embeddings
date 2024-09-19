@@ -1,0 +1,60 @@
+
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+#settings {
+    position: fixed;
+    background-color: #999;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+#settings-pane {
+    max-height: 80vh;
+    overflow: scroll;
+}
+
+#diagram {
+    display:flex;
+    flex-direction: row;
+}
+
+.unc-type-column {
+    display:flex; 
+    flex-direction: column; 
+    border-right: 5px solid #444;
+}
+
+
+.ranking-divider {
+    width: 2px;
+    background-color: #777;
+    margin: 0 8px;
+}
+
+.img-row-colored {
+    background-color: #ccc;
+}
+
+img {
+    padding: 2px;
+}
+
+/*.image-row:nth-child(2n) {
+    background-color: #ccc;
+}*/
+.img-row {
+    padding: 0 6px 1px 6px;
+}
+h1 {
+    text-align: center;
+}
