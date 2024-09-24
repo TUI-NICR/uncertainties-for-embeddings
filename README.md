@@ -32,6 +32,7 @@ Run the following commands:
 conda env create --file conda_env/UE.yml
 conda activate UE
 ```
+Please note that we also provide other conda environments that are described [here](conda_env/README.md).
 
 Next, make sure you have [downloaded the Market-1501 dataset](https://www.kaggle.com/datasets/pengcw1/market-1501/data) and have the path ready.
 
