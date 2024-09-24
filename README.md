@@ -37,9 +37,6 @@ Next, make sure you have [downloaded the Market-1501 dataset](https://www.kaggle
 
 ### Training
 
-We provide the [checkpoint file for a trained model that can be downloaded](https://drive.google.com/uc?export=download&id=1z8SWm0O6ciwI02RAV5rPWhG5qp12_jM2) and stored as `trained_model/model_best.pth`.
-This is the best of our trained models when using the embedding refinement method that produces the best result on average ($D^{\mu,\Sigma^{(M)}}, c = \lambda_{opt} \cdot \frac{1}{\left\|\Sigma^{(V)}\right\|_{1}}$).
-
 Should you wish to train a model from scratch, follow these steps:
 1. Update the paths in `fastreid-UE/tools/publication/training.py` as needed.
 2. Run the following commands:
@@ -56,9 +53,10 @@ By default, the model just trains and does no evaluations until it is finished. 
 
 If you trained the model from scratch, it has already generated the model outputs file and you can move on to the next step.
 
-We also provide a [model outputs file that can be downloaded](https://drive.google.com/uc?export=download&id=1ezEztkDU8V1NJArvkiAqUjyp_up01G7D) and strored as `trained_model/raw_model_outputs.json`.
+In case you prefer to skip to train the model yourself, we provide the [checkpoint file for a trained model that can be downloaded](https://drive.google.com/uc?export=download&id=1z8SWm0O6ciwI02RAV5rPWhG5qp12_jM2) and stored as `trained_model/model_best.pth`.
+This is the best of our trained models when using the embedding refinement method that produces the best result on average ($D^{\mu,\Sigma^{(M)}}, c = \lambda_{opt} \cdot \frac{1}{\left\|\Sigma^{(V)}\right\|_{1}}$).
 
-If you want to generate the model outputs file based on an existing checkpoint file, follow these steps
+If you want to generate the model outputs file based on an existing checkpoint file (either from your training or downloaded), follow these steps
 1. Update the paths in `fastreid-UE/tools/publication/training.py` as needed.
 2. Run the following commands:
 
@@ -69,6 +67,10 @@ python tools/publication/training.py --eval-only
 
 
 ### Evaluation based on Model Outputs
+
+With the model outputs file, you can start the evaluation.
+In case you preferred to skip the previous steps, we also provide a [model outputs file that can be downloaded](https://drive.google.com/uc?export=download&id=1ezEztkDU8V1NJArvkiAqUjyp_up01G7D) and strored as `trained_model/raw_model_outputs.json`.
+If you are interested only in using a trained model, please follow step 2.
 
 In order to evaluate the model, follow these steps:
 1. Update the paths in `fastreid-UE/tools/publication/evaluation.py` as needed.
