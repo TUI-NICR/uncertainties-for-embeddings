@@ -51,9 +51,9 @@ By default, the model just trains and does no evaluations until it is finished. 
 
 ### Generation of Model Outputs
 
-If you trained the model from scratch, it has already generated the model outputs file and you can move on to the next step.
+If you trained the model from scratch, it has already generated the model outputs file and you can move on with this step.
 
-In case you prefer to skip to train the model yourself, we provide the [checkpoint file for a trained model that can be downloaded](https://drive.google.com/uc?export=download&id=1z8SWm0O6ciwI02RAV5rPWhG5qp12_jM2) and stored as `trained_model/model_best.pth`.
+In case you preferred to skip to train the model yourself, we provide the [checkpoint file for a trained model that can be downloaded](https://drive.google.com/uc?export=download&id=1z8SWm0O6ciwI02RAV5rPWhG5qp12_jM2) and stored as `trained_model/model_best.pth`.
 This is the best of our trained models when using the embedding refinement method that produces the best result on average ($D^{\mu,\Sigma^{(M)}}, c = \lambda_{opt} \cdot \frac{1}{\left\|\Sigma^{(V)}\right\|_{1}}$).
 
 If you want to generate the model outputs file based on an existing checkpoint file (either from your training or downloaded), follow these steps
