@@ -1,15 +1,18 @@
 # Improving Re-Identification by Estimating and Utilizing Diverse Uncertainty Types for Embeddings
 
-This is the repository containing the code and best model for the paper <!--[-->Improving Re-Identification by Estimating and Utilizing Diverse Uncertainty Types for Embeddings<!--](TODO: add open access link)--> published in Algorithms. 
+This is the repository containing the code and best model for the paper [Improving Re-Identification by Estimating and Utilizing Diverse Uncertainty Types for Embeddings](https://doi.org/10.3390/a17100430) published in Algorithms. 
 
 Below, you will find instructions for evaluating our model and reproducing our results.
 
-If you use our work, please cite it as follows:<!-- TODO: add other bigliographic data -->
+If you use our work, please cite it as follows:
 ```bibtex
 @article{eisenbach2024improving,
   title={Improving Re-Identification by Estimating and Utilizing Diverse Uncertainty Types for Embeddings},
   author={Eisenbach, Markus and Gebhardt, Andreas and Aganian, Dustin and Gross, Horst-Michael},
   journal={Algorithms},
+  volume={17},
+  number={10},
+  pages={1--40},
   year={2024},
   publisher={MDPI}
 }
